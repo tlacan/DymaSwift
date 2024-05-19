@@ -12,7 +12,11 @@ struct OnboardingScreen: View {
     static let stepImageBottomSpacing: CGFloat = 80
   }
 
+  @State var index: Int = 0
+  let stepsData = OnboardingStepData.allValues()
+
   var body: some View {
+
     stepView(data: OnboardingStepData.allValues()[0])
   }
 

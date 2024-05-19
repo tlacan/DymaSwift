@@ -1,0 +1,160 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: DymaTrip
+servers:
+  - url: http://localhost:80
+paths:
+  /api/cities:
+    get:
+      tags:
+        - Cities
+      summary: Get cities
+      operationId: getCities
+      responses:
+        '200':
+          description: Success
+
+  /api/trips:
+    get:
+      tags:
+        - Trips
+      summary: Get trips
+      operationId: getTrips
+      responses:
+        '200':
+          description: Success
+
+  /api/trip:
+    post:
+      tags:
+        - Trips
+      summary: Create trip
+      operationId: createTrip
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                city:
+                  type: string
+                activities:
+                  type: array
+                  items:
+                    type: object
+                date:
+                  type: string
+                  format: date
+      responses:
+        '200':
+          description: Success
+    put:
+      tags:
+        - Trips
+      summary: Update trip
+      operationId: updateTrip
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                _id:
+                  type: string
+                city:
+                  type: string
+                activities:
+                  type: array
+                  items:
+                    type: object
+                date:
+                  type: string
+                  format: date
+      responses:
+        '200':
+          description: Success
+
+  /api/city/{cityId}/activity:
+    post:
+      tags:
+        - Cities
+      summary: Add activity to a city
+      operationId: addActivityToCity
+      parameters:
+        - name: cityId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                image:
+                  type: string
+                city:
+                  type: string
+                price:
+                  type: number
+                status:
+                  type: number
+                address:
+                  type: string
+                longitude:
+                  type: number
+                latitude:
+                  type: number
+      responses:
+        '200':
+          description: Success
+
+  /api/city/{cityId}/activities/verify/{activityName}:
+    get:
+      tags: 
+        - Activities
+      summary: Verify uniqueness of a trip
+      operationId: verifyUniquenessOfTrip
+      parameters:
+        - name: cityId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: activityName
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Ok
+        '400':
+          description: L’activité existe déjà
+
+  /api/activity/image:
+    post:
+      tags:
+        - Activities
+      summary: Upload activity image
+      operationId: uploadActivityImage
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                activity:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Success
