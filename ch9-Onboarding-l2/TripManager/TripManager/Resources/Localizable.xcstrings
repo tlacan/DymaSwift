@@ -1,9 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "Next" : {
-
-    },
     "onboarding.button.next" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -158,6 +155,7 @@
       }
     },
     "Skip" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
