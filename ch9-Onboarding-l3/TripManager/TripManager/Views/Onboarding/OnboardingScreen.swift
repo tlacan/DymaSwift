@@ -10,34 +10,38 @@ import SwiftUI
 struct OnboardingScreen: View {
   struct ViewStyles {
     static let stepImageBottomSpacing: CGFloat = 80
-    static let tabViewBottomSpacing: CGFloat = 100
-    static let stepBottomSpacing: CGFloat = 60
+    static let pageControlSelectedSize: CGFloat = 8
+    static let pageControlNotSelectedSize: CGFloat = 6
+    static let pageControlStokeWidth: CGFloat = 1
   }
 
   @State var index: Int = 0
   let stepsData = OnboardingStepData.allValues()
 
   var body: some View {
-    ZStack {
-      Color(R.color.mainBackground.name).ignoresSafeArea()
-      ZStack(alignment: .bottom) {
-        TabView(selection: $index) {
-          ForEach(stepsData) { stepData in
-            stepView(data: stepData)
-              .ignoresSafeArea(edges: .top)
-              .tag(stepData.id)
-              .padding(.bottom, ViewStyles.stepBottomSpacing)
-          }
+    VStack {
+      TabView(selection: $index) {
+        ForEach(stepsData) { stepData in
+          stepView(data: stepData)
+            .ignoresSafeArea(edges: .top)
+            .tag(stepData.id)
         }
-        .padding(.bottom, ViewStyles.tabViewBottomSpacing)
-        .ignoresSafeArea(edges: .top)
-        .tabViewStyle(.page)
-        .indexViewStyle(.page(backgroundDisplayMode: .always))
-        VStack {
-          buttonsView()
-            .padding(.top, AppStyles.Padding.small16.rawValue)
-            .padding(.bottom, AppStyles.Padding.big32.rawValue)
-        }
+      }
+      .tabViewStyle(.page(indexDisplayMode: .never))
+      pageControl()
+      buttonsView()
+    }
+  }
+
+  @ViewBuilder
+  func pageControl() -> some View {
+    HStack(spacing: AppStyles.Padding.verySmall8.rawValue) {
+      ForEach(0..<stepsData.count, id: \.self) { pageIndex in
+        Circle()
+          .stroke(Color.accentColor, lineWidth: ViewStyles.pageControlStokeWidth)
+          .fill(index == pageIndex ? Color.accentColor : Color.white)
+          .frame(width: index == pageIndex ? ViewStyles.pageControlSelectedSize : ViewStyles.pageControlNotSelectedSize,
+                 height: index == pageIndex ? ViewStyles.pageControlSelectedSize : ViewStyles.pageControlNotSelectedSize)
       }
     }
   }
