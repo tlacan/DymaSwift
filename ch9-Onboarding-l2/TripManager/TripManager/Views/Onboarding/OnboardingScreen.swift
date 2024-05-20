@@ -10,23 +10,24 @@ import SwiftUI
 struct OnboardingScreen: View {
   struct ViewStyles {
     static let stepImageBottomSpacing: CGFloat = 80
-    static let stepBottomSpacing: CGFloat = 60
   }
 
   @State var index: Int = 0
   let stepsData = OnboardingStepData.allValues()
 
   var body: some View {
-    TabView(selection: $index) {
-      ForEach(stepsData) { stepData in
-        stepView(data: stepData)
-          .ignoresSafeArea(edges: .top)
-          .tag(stepData.id)
-          .padding(.bottom, ViewStyles.stepBottomSpacing)
+    VStack {
+      TabView(selection: $index) {
+        ForEach(stepsData) { stepData in
+          stepView(data: stepData)
+            .ignoresSafeArea(edges: .top)
+            .tag(stepData.id)
+        }
       }
+      .tabViewStyle(.page)
+      .indexViewStyle(.page(backgroundDisplayMode: .always))
+      buttonsView()
     }
-    .tabViewStyle(.page)
-    .indexViewStyle(.page(backgroundDisplayMode: .always))
   }
 
   @ViewBuilder
