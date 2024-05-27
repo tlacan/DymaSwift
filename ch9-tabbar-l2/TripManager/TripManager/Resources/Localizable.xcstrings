@@ -1,7 +1,10 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "OK" : {
+    "Home" : {
+
+    },
+    "My Trips" : {
 
     },
     "onboarding.button.next" : {
@@ -168,7 +171,7 @@
         }
       }
     },
-    "tabbar.home" : {
+    "tab.home" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -185,7 +188,7 @@
         }
       }
     },
-    "tabbar.myTrips" : {
+    "tab.myTrips" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -197,7 +200,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mes Voyages"
+            "value" : "Mes voyages"
           }
         }
       }
