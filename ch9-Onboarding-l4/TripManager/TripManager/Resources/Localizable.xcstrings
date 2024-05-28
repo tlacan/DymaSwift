@@ -168,40 +168,6 @@
         }
       }
     },
-    "tabbar.home" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Discovery"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Explorer"
-          }
-        }
-      }
-    },
-    "tabbar.myTrips" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "My Trips"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mes Voyages"
-          }
-        }
-      }
-    },
     "text.sample.n.quantity" : {
       "extractionState" : "manual",
       "localizations" : {
