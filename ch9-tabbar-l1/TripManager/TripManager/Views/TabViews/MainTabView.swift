@@ -16,11 +16,7 @@ struct MainTabView: View {
   @State private var tabSelection = Tabs.home
 
   var body: some View {
-    TabView(selection: Binding(get: {
-      tabSelection
-    }, set: { value in
-      tabSelection = value
-    })) {
+    TabView(selection: $tabSelection) {
       HomeScreen()
         .tabItem {
           Label(R.string.localizable.tabHome(), systemImage: "globe.europe.africa.fill")
