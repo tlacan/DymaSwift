@@ -36,6 +36,6 @@ import Combine
 
    func createTrip() {
      let newTrip = TripModel(id: UUID().uuidString, city: city.id, activities: selectedActivities)
-     NotificationsConstants.didCreateTrip.post()
+     NotificationsConstants.didCreateTrip.post(newTrip)
    }
  }
