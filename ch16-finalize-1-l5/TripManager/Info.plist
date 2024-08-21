@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Need to user user location to find activities near by</string>
+	<key>UILaunchScreen</key>
+	<dict>
+		<key>UIColorName</key>
+		<string>mainBackground</string>
+		<key>UIImageName</key>
+		<string>LaunchImage</string>
+	</dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>AvenirNext-Bold.ttf</string>
+		<string>AvenirNext-DemiBold.ttf</string>
+		<string>AvenirNext-Medium.ttf</string>
+		<string>AvenirNext-Regular.ttf</string>
+	</array>
+</dict>
+</plist>
