@@ -37,9 +37,11 @@ import Combine
    }
 
    func createTrip() {
-     Task {
-       if let newApiTrip: TripModel = await engine.makeAPICall(operations: {
-         await engine.tripService.createTrip(TripModel(city: city.id, activities: selectedActivities))
+     Task { [weak self] in
+       guard let self = self else { return }
+       if let newApiTrip: TripModel = await self.engine.makeAPICall(operations: { [weak self] in
+         guard let self else { return .failure(.unknownError)}
+         return await self.engine.tripService.createTrip(TripModel(city: city.id, activities: selectedActivities))
        }) {
          Task { @MainActor in
            NotificationsConstants.didCreateTrip.post(object: newApiTrip)
