@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeScreen: View {
-  struct ViewStyles {
+  enum ViewStyles {
     static let cityCellHeight: CGFloat = 200
     static let cityCellBottomHeight: CGFloat = 48
     static let cellBottomColor = Color.white.opacity(0.8)
@@ -46,9 +46,9 @@ struct HomeScreen: View {
         .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
         .navigationTitle(R.string.localizable.tabHome())
         .overlay {
-            if values.filter({ city in
+          if !values.contains(where: { city in
               city.name.lowercased().contains(searchText.lowercased()) || searchText.isEmpty
-            }).isEmpty {
+            }) {
                 ContentUnavailableView.search
             }
         }

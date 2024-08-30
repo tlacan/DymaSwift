@@ -37,7 +37,7 @@ extension URLRequest {
         result += "-d '\(string)' \\\n"
     }
 
-    if let url = url {
+    if let url {
         result += url.absoluteString
     }
 

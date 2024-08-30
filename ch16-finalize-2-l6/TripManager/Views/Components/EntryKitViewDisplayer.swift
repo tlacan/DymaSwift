@@ -9,7 +9,7 @@ import SwiftEntryKit
 import UIKit
 import SwiftUI
 
-struct EntryKitViewDisplayer {
+enum EntryKitViewDisplayer {
   static let loadingEntryName = "LoadingView"
 
   static func showMessage(_ message: String,

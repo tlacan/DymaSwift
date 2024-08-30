@@ -10,7 +10,7 @@ import SwiftUI
 struct GridCellModifier: ViewModifier {
   let width: CGFloat
 
-  struct ModifierStyles {
+  enum ModifierStyles {
     static let gridItemCornerSize = CGSize(width: 20, height: 20)
   }
 

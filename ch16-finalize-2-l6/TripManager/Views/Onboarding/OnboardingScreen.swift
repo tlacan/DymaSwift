@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct OnboardingScreen: View {
-  struct ViewStyles {
+  enum ViewStyles {
     static let tabViewBottomSpacing: CGFloat = 106
     static let stepImageBottomSpacing: CGFloat = 80
     static let pageControlSelectedSize: CGFloat = 8

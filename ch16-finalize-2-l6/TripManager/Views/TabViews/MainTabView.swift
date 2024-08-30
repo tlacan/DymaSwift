@@ -31,7 +31,7 @@ struct MainTabView: View {
   @State private var animateTabHome = false
   @State private var animateTabMyTrips = false
 
-  struct ViewStyles {
+  enum ViewStyles {
     static let gradientColors: [Color] = [Color(R.color.mainBackground.name), Color(red: 0.85, green: 0.85, blue: 0.85)]
     static let borderHeight: CGFloat = 6
     static let borderOpacity = 0.8

@@ -12,7 +12,7 @@ struct CityActivitiesScreen: View {
   var dismiss
   @State var viewModel: CityActivitiesScreenViewModel
 
-  struct ViewStyles {
+  enum ViewStyles {
     static let headerHeight: CGFloat = 70
     static let headerGradient = LinearGradient(stops: [
       Gradient.Stop(color: Color(R.color.mainBackground.name), location: 0.85),

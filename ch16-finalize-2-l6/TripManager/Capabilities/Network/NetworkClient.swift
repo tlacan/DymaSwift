@@ -105,12 +105,12 @@ final class NetworkClient {
         do {
           let decodedObject = try NetworkClient.defaultDecoder.decode(T.self, from: data)
           return .success(decodedObject)
-        } catch let error {
+        } catch {
           return .failure(.decodingError(decodingError: error))
         }
       }
       return .failure(.serverError(statusCode: httpResponse.statusCode))
-    } catch let error {
+    } catch {
       return .failure(.other(error: error))
     }
   }
@@ -143,7 +143,7 @@ final class NetworkClient {
     func call<T: Decodable>(request: URLRequest,
                             onDone: @escaping (APIResponse<T>) -> Void) -> URLSessionDataTask {
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data, error == nil else {
+            guard let data, error == nil else {
               onDone(.failure(APIError.other(error: error)))
                 return
             }
@@ -159,7 +159,7 @@ final class NetworkClient {
                 do {
                     let decodedObject = try NetworkClient.defaultDecoder.decode(T.self, from: data)
                     onDone(.success(decodedObject))
-                } catch let error {
+                } catch {
                     print("[DECODING ERROR] \(error.localizedDescription)")
                   onDone(.failure(.decodingError(decodingError: error)))
                 }

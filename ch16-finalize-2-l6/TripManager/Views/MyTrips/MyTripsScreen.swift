@@ -10,7 +10,7 @@ import SwiftUI
 struct MyTripsScreen: View {
   @State var viewModel: MyTripsScreenViewModel
 
-  struct ViewStyles {
+  enum ViewStyles {
     static let dateFont = Font.custom(R.font.avenirNextMedium, size: 12)
     static let nbPastItemsPerRow = 2
     static let futureItemShadowRadius: CGFloat = 10

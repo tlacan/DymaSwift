@@ -13,7 +13,7 @@ struct MyTripsMapView: View {
   @State var viewModel: MyTripsMapViewModel
   @State var mapView: MapView
 
-  struct ViewStyles {
+  enum ViewStyles {
     static let buttonSize: CGFloat = 32
     static let activitySheetHeight: CGFloat = 0.33
   }

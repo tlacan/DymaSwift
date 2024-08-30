@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct AppStyles {
+enum AppStyles {
 
   enum Padding: CGFloat {
     case verySmall8 = 8
