@@ -1,0 +1,51 @@
+{
+  "originHash" : "0b9a2cac17ffd49d8b98404dffa62e8633207e5030bff83671ade7ec7e23d890",
+  "pins" : [
+    {
+      "identity" : "r.swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/fthdgn/R.swift/",
+      "state" : {
+        "branch" : "xcstrings-7.5.0",
+        "revision" : "545b75c1848cc986513eb3429b7f42b984a884b8"
+      }
+    },
+    {
+      "identity" : "swift-argument-parser",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-argument-parser",
+      "state" : {
+        "revision" : "41982a3656a71c768319979febd796c6fd111d5c",
+        "version" : "1.5.0"
+      }
+    },
+    {
+      "identity" : "swiftentrykit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/huri000/SwiftEntryKit.git",
+      "state" : {
+        "revision" : "5ad36cccf0c4b9fea32f4e9b17a8e38f07563ef0",
+        "version" : "2.0.0"
+      }
+    },
+    {
+      "identity" : "swiftlintplugins",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SimplyDanny/SwiftLintPlugins",
+      "state" : {
+        "revision" : "7c80ce6f142164b0201871e580b021d1b2c69804",
+        "version" : "0.57.0"
+      }
+    },
+    {
+      "identity" : "xcodeedit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/tomlokhorst/XcodeEdit",
+      "state" : {
+        "revision" : "1e761a55dd8d73b4e9cc227a297f438413953571",
+        "version" : "2.11.1"
+      }
+    }
+  ],
+  "version" : 3
+}

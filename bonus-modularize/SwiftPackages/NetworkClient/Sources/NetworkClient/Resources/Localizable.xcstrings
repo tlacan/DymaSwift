@@ -1,0 +1,108 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "apiError.decodingError" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data decoding error. The response data could not be interpreted correctly. %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erreur de décodage des données. Les données de réponse n’ont pas pu être interprétées correctement. %@"
+          }
+        }
+      }
+    },
+    "apiError.noNetwork" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No network connection. Please check your internet connection and try again."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pas de connexion réseau. Veuillez vérifier votre connexion internet et réessayer."
+          }
+        }
+      }
+    },
+    "apiError.other" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "An error occurred. Additional details: %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Une erreur s’est produite. Détails supplémentaires: %@"
+          }
+        }
+      }
+    },
+    "apiError.serverError" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Server error. The server returned a status code of %@."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erreur du serveur. Le serveur a renvoyé un code d’état %@."
+          }
+        }
+      }
+    },
+    "apiError.unknownError" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unknown error occurred. An unexpected issue has been encountered."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Une erreur inconnue s’est produite. Un problème inattendu a été rencontré."
+          }
+        }
+      }
+    },
+    "apiError.urlError" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid URL. The requested URL is not properly formatted or is missing."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL invalide. L’URL demandée n’est pas correctement formatée ou est manquante."
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

@@ -38,9 +38,11 @@ enum AppStyles {
 
     var font: Font {
       switch self {
-      case .title, .sectionTitle, .navigationTitle: return Font.custom(R.font.avenirNextBold, size: size)
-      case .buttonCTA, .navigationAction: return Font.custom(R.font.avenirNextDemiBold, size: size)
-      case .description: return Font.custom(R.font.avenirNextRegular, size: size)
+      case .title, .sectionTitle, .navigationTitle: return Font.custom(R.font.avenirNextBold, size: size,
+                                                                       relativeTo: .title)
+      case .buttonCTA, .navigationAction: return Font.custom(R.font.avenirNextDemiBold, size: size,
+                                                             relativeTo: .headline)
+      case .description: return Font.custom(R.font.avenirNextRegular, size: size, relativeTo: .body)
       }
     }
 

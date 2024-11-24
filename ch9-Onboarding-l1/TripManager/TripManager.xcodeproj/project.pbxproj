@@ -22,8 +22,8 @@
 		1D5A5E872BBE4D7F009C918B /* AvenirNext-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1D5A5E832BBE4D7F009C918B /* AvenirNext-Regular.ttf */; };
 		1D78FA822BCAE4A700D204F8 /* AppStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D78FA812BCAE4A700D204F8 /* AppStyle.swift */; };
 		1D78FA852BCAE6BE00D204F8 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D78FA842BCAE6BE00D204F8 /* String+Extensions.swift */; };
-		1D9A66432BBC91C300764C58 /* RswiftLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 1D9A66422BBC91C300764C58 /* RswiftLibrary */; };
 		1DB349DD2BF5610A005B4D19 /* OnboardingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB349DC2BF5610A005B4D19 /* OnboardingScreen.swift */; };
+		1DBF52BD2CA5CD0100BBD670 /* RswiftLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 1DBF52BC2CA5CD0100BBD670 /* RswiftLibrary */; };
 		1DD5F9662BF7B3C70065A9B7 /* OnboardingStepData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD5F9652BF7B3C70065A9B7 /* OnboardingStepData.swift */; };
 		1DEDAA6E2BBDDF7600A9B98D /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 1DEDAA6D2BBDDF7600A9B98D /* Localizable.xcstrings */; };
 /* End PBXBuildFile section */
@@ -75,7 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D9A66432BBC91C300764C58 /* RswiftLibrary in Frameworks */,
+				1DBF52BD2CA5CD0100BBD670 /* RswiftLibrary in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,11 +219,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				1D9A66452BBC91CB00764C58 /* PBXTargetDependency */,
+				1DBF52BF2CA5CD0B00BBD670 /* PBXTargetDependency */,
 			);
 			name = TripManager;
 			packageProductDependencies = (
-				1D9A66422BBC91C300764C58 /* RswiftLibrary */,
+				1DBF52BC2CA5CD0100BBD670 /* RswiftLibrary */,
 			);
 			productName = TripManager;
 			productReference = 1D1408402BAA28B8006B6115 /* TripManager.app */;
@@ -299,7 +299,7 @@
 			);
 			mainGroup = 1D1408372BAA28B8006B6115;
 			packageReferences = (
-				1D9A66412BBC91C300764C58 /* XCRemoteSwiftPackageReference "R" */,
+				1DBF52BB2CA5CD0100BBD670 /* XCRemoteSwiftPackageReference "R" */,
 			);
 			productRefGroup = 1D1408412BAA28B8006B6115 /* Products */;
 			projectDirPath = "";
@@ -411,9 +411,9 @@
 			target = 1D14083F2BAA28B8006B6115 /* TripManager */;
 			targetProxy = 1D14085B2BAA28B9006B6115 /* PBXContainerItemProxy */;
 		};
-		1D9A66452BBC91CB00764C58 /* PBXTargetDependency */ = {
+		1DBF52BF2CA5CD0B00BBD670 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			productRef = 1D9A66442BBC91CB00764C58 /* RswiftGenerateInternalResources */;
+			productRef = 1DBF52BE2CA5CD0B00BBD670 /* RswiftGenerateInternalResources */;
 		};
 /* End PBXTargetDependency section */
 
@@ -723,25 +723,25 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		1D9A66412BBC91C300764C58 /* XCRemoteSwiftPackageReference "R" */ = {
+		1DBF52BB2CA5CD0100BBD670 /* XCRemoteSwiftPackageReference "R" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/fthdgn/R.swift/";
+			repositoryURL = "https://github.com/mac-cain13/R.swift";
 			requirement = {
-				branch = "xcstrings-7.5.0";
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.6.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		1D9A66422BBC91C300764C58 /* RswiftLibrary */ = {
+		1DBF52BC2CA5CD0100BBD670 /* RswiftLibrary */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1D9A66412BBC91C300764C58 /* XCRemoteSwiftPackageReference "R" */;
+			package = 1DBF52BB2CA5CD0100BBD670 /* XCRemoteSwiftPackageReference "R" */;
 			productName = RswiftLibrary;
 		};
-		1D9A66442BBC91CB00764C58 /* RswiftGenerateInternalResources */ = {
+		1DBF52BE2CA5CD0B00BBD670 /* RswiftGenerateInternalResources */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1D9A66412BBC91C300764C58 /* XCRemoteSwiftPackageReference "R" */;
+			package = 1DBF52BB2CA5CD0100BBD670 /* XCRemoteSwiftPackageReference "R" */;
 			productName = "plugin:RswiftGenerateInternalResources";
 		};
 /* End XCSwiftPackageProductDependency section */
