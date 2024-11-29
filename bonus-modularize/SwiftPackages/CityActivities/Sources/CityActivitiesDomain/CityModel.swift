@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct CityModel: Identifiable, Hashable, Codable {
+public struct CityModel: Identifiable, Hashable, Codable, @unchecked Sendable {
   public let id: String
   public let image: String
   public let name: String

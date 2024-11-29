@@ -2,7 +2,6 @@ import SwiftUI
 import CityActivitiesDomain
 import DesignSystem
 import CityActivitiesData
-import Swinject
 import NetworkClient
 
 public struct HomeScreen: View {
@@ -18,8 +17,10 @@ public struct HomeScreen: View {
   @State private var cityDestination: CityModel?
 
   let cityService: CityService
+  let networkClient: NetworkClient
 
   public init(networkClient: NetworkClient, mock: Bool = false) {
+    self.networkClient = networkClient
     self.cityService = mock ? CityServiceMock() : CityServiceNetwork(networkClient: networkClient)
   }
 
@@ -39,16 +40,14 @@ public struct HomeScreen: View {
               .listRowInsets(EdgeInsets())
           }
         }
-        /*
          .navigationDestination(item: $cityDestination) { city in
-          CityActivitiesScreen(city: city, networkClient: cityService.networkClient)
+           CityActivitiesScreen(city: city, networkClient: networkClient)
         }
-         */
         .background(Color(DesignSystem.R.color.mainBackground.name))
         .scrollContentBackground(.hidden)
         .listRowSpacing(AppStyles.Padding.small16.rawValue)
         .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
-        .navigationTitle(R.string.localizable.HomeScreenNavigationTitle())
+        .navigationTitle(R.string.localizable.homeScreenNavigationTitle())
         .overlay {
           if !values.contains(where: { city in
               city.name.lowercased().contains(searchText.lowercased()) || searchText.isEmpty
@@ -56,17 +55,17 @@ public struct HomeScreen: View {
                 ContentUnavailableView.search
             }
         }
-        /*.task {
+        .task {
           if !values.isEmpty {
             return
           }
           let cities: [CityModel]? = await AppStyles.makeAPICall {
             await cityService.cities()
           }
-          Task { @MainActor in
+          await MainActor.run {
             self.values = cities ?? []
           }
-        }*/
+        }
       }
   }
 

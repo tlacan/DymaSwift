@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct TripModel: Equatable, Hashable, Codable {
+public struct TripModel: Equatable, Hashable, Codable, @unchecked Sendable {
   public var id: String?
   public var city: String
   public var activities: [ActivityModel]

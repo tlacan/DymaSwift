@@ -27,10 +27,7 @@ let package = Package(
               .product(name: "RswiftLibrary", package: "R.swift")
             ],
             resources: [.process("Resources")],
-            swiftSettings: [
-                .unsafeFlags(["-Xfrontend", "-warn-long-expression-type-checking=\(msForWarningExpression)",
-                              "-Xfrontend", "-warn-long-function-bodies=\(msForWarningBody)"])
-            ],
+            swiftSettings: swiftSettingsFlags(),
             plugins: [
               .plugin(name: "RswiftGenerateInternalResources", package: "R.swift"),
               .plugin(name: "SwiftLintBuildToolPlugin", package: "SwiftLintPlugins")
@@ -42,3 +39,12 @@ let package = Package(
         ),
     ]
 )
+
+private func swiftSettingsFlags() -> [SwiftSetting] {
+  [.unsafeFlags([
+    "-Xfrontend", "-warn-long-expression-type-checking=\(msForWarningExpression)",
+    "-Xfrontend", "-warn-long-function-bodies=\(msForWarningBody)",
+    "-Xfrontend", "-warn-concurrency",
+    "-Xfrontend", "-enable-actor-data-race-checks"
+   ])]
+}

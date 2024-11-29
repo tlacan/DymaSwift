@@ -12,9 +12,10 @@ import CityActivitiesDomain
 import DesignSystem
 import NetworkClient
 import CityActivitiesData
+import GlobalHelper
 
 @Observable
-
+@MainActor
  class CityActivitiesScreenViewModel {
    let city: CityModel
    var values: [ActivityModel]
@@ -45,14 +46,26 @@ import CityActivitiesData
      self.tripService = mock ? TripServiceMock() : TripServiceNetwork(networkClient: networkClient)
    }
 
-   func createTrip() async {
-     if let newApiTrip: TripModel = await DesignSystem.AppStyles.makeAPICall(
-      operations: { [tripService, city, selectedActivities] in
-       return await tripService.createTrip(TripModel(city: city.id, activities: selectedActivities))
-     }) {
-       Task { @MainActor in
-         // NotificationsConstants.didCreateTrip.post(object: newApiTrip)
-       }
+   @discardableResult
+   func createTrip() async -> TripModel? {
+     let result = await AppStyles.makeAPICall {
+       await tripService.createTrip(TripModel(city: city.id, activities: selectedActivities))
      }
+     if let result {
+       NotificationsConstants.didCreateTrip.post(object: result)
+     }
+     return result
+     /*
+      Version B
+     await AppStyles.showLoader()
+     let apiResult = await tripService.createTrip(TripModel(city: city.id, activities: selectedActivities))
+     await AppStyles.hideLoader()
+     switch apiResult {
+     case .success(let result): return result
+     case .failure(let error):
+       await AppStyles.showError(error)
+       return nil
+     }
+      */
    }
  }

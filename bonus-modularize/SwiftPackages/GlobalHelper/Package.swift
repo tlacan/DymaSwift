@@ -3,7 +3,7 @@
 
 import PackageDescription
 
-private let name = "DesignSystem"
+let name = "GlobalHelper"
 private let msForWarningExpression = 50
 private let msForWarningBody = 100
 
@@ -17,23 +17,13 @@ let package = Package(
             targets: [name]),
     ],
     dependencies: [
-      .package(name: "NetworkClient", path: "../NetworkClient"),
-      .package(url: "https://github.com/tlacan/R.swift/", branch: "xcstrings-7.7.0"),
-      .package(url: "https://github.com/SimplyDanny/SwiftLintPlugins", from: "0.57.0"),
-      .package(url: "https://github.com/huri000/SwiftEntryKit.git", from: "2.0.0")
+      .package(url: "https://github.com/SimplyDanny/SwiftLintPlugins", from: "0.57.0")
     ],
     targets: [
         .target(
             name: name,
-            dependencies: [
-              "NetworkClient",
-              .product(name: "RswiftLibrary", package: "R.swift"),
-              .product(name: "SwiftEntryKit", package: "SwiftEntryKit")
-            ],
-            resources: [.process("Resources")],
             swiftSettings: swiftSettingsFlags(),
             plugins: [
-              .plugin(name: "RswiftGeneratePublicResources", package: "R.swift"),
               .plugin(name: "SwiftLintBuildToolPlugin", package: "SwiftLintPlugins")
             ]
         ),
@@ -52,3 +42,4 @@ private func swiftSettingsFlags() -> [SwiftSetting] {
     "-Xfrontend", "-enable-actor-data-race-checks"
    ])]
 }
+

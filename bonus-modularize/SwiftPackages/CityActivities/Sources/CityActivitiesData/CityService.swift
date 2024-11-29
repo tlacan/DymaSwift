@@ -8,11 +8,11 @@
 import NetworkClient
 import CityActivitiesDomain
 
-public protocol CityService {
+public protocol CityService: Sendable {
   func cities() async -> APIResponse<[CityModel]>
 }
 
-final public class CityServiceNetwork: CityService {
+final public class CityServiceNetwork: CityService, @unchecked Sendable {
   public let networkClient: NetworkClient
 
   public init(networkClient: NetworkClient) {
@@ -24,7 +24,7 @@ final public class CityServiceNetwork: CityService {
   }
 }
 
-final public class CityServiceMock: CityService {
+final public class CityServiceMock: CityService, @unchecked Sendable {
 
   public init() { }
 

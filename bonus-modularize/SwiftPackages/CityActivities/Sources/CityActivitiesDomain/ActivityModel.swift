@@ -24,7 +24,7 @@ public struct LocationActivity: Equatable, Codable {
   }
 }
 
-public struct ActivityModel: Equatable, Codable, Hashable {
+public struct ActivityModel: Equatable, Codable, Hashable, @unchecked Sendable {
   public var id: String?
   public var name: String
   public var image: String

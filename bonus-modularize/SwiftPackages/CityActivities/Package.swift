@@ -4,7 +4,7 @@
 import PackageDescription
 
 private let name = "CityActivities"
-private let internalPackages = ["DesignSystem", "NetworkClient"]
+private let internalPackages = ["DesignSystem", "NetworkClient", "GlobalHelper"]
 private let domainLayer = "\(name)Domain"
 private let dataLayer = "\(name)Data"
 private let uiLayer = "\(name)UI"
@@ -25,37 +25,28 @@ let package = Package(
         .target(
             name: "\(name)UI",
             dependencies: [
-              "Swinject",
               "DesignSystem",
+              "GlobalHelper",
               .product(name: "RswiftLibrary", package: "R.swift"),
               .target(name: dataLayer),
               .target(name: domainLayer),
             ],
             resources: [.process("Resources")],
-            swiftSettings: [
-                .unsafeFlags(["-Xfrontend", "-warn-long-expression-type-checking=\(msForWarningExpression)",
-                              "-Xfrontend", "-warn-long-function-bodies=\(msForWarningBody)"])
-            ],
+            swiftSettings: swiftSettingsFlags(),
             plugins: [
               .plugin(name: "RswiftGenerateInternalResources", package: "R.swift"),
               .plugin(name: "SwiftLintBuildToolPlugin", package: "SwiftLintPlugins")
             ]
         ),
         .target(name: domainLayer,
-            swiftSettings: [
-                .unsafeFlags(["-Xfrontend", "-warn-long-expression-type-checking=\(msForWarningExpression)",
-                              "-Xfrontend", "-warn-long-function-bodies=\(msForWarningBody)"])
-            ],
+            swiftSettings: swiftSettingsFlags(),
             plugins: [
               .plugin(name: "SwiftLintBuildToolPlugin", package: "SwiftLintPlugins")
             ]
         ),
         .target(name: dataLayer,
                 dependencies: targetDependencies(internalPackages: ["NetworkClient", domainLayer]),
-            swiftSettings: [
-                .unsafeFlags(["-Xfrontend", "-warn-long-expression-type-checking=\(msForWarningExpression)",
-                              "-Xfrontend", "-warn-long-function-bodies=\(msForWarningBody)"])
-            ],
+            swiftSettings: swiftSettingsFlags(),
             plugins: [
               .plugin(name: "SwiftLintBuildToolPlugin", package: "SwiftLintPlugins")
             ]
@@ -63,35 +54,34 @@ let package = Package(
         .testTarget(
             name: "\(uiLayer)Tests",
             dependencies: [Target.Dependency.byName(name: uiLayer)],
-            swiftSettings: [
-                .unsafeFlags(["-Xfrontend", "-warn-long-expression-type-checking=\(msForWarningExpression)",
-                              "-Xfrontend", "-warn-long-function-bodies=\(msForWarningBody)"])
-            ]
+            swiftSettings: swiftSettingsFlags()
         ),
         .testTarget(
             name: "\(domainLayer)Tests",
             dependencies: [Target.Dependency.byName(name: domainLayer)],
-            swiftSettings: [
-                .unsafeFlags(["-Xfrontend", "-warn-long-expression-type-checking=\(msForWarningExpression)",
-                              "-Xfrontend", "-warn-long-function-bodies=\(msForWarningBody)"])
-            ]
+            swiftSettings: swiftSettingsFlags()
         ),
         .testTarget(
             name: "\(dataLayer)Tests",
             dependencies: [Target.Dependency.byName(name: dataLayer)],
-            swiftSettings: [
-                .unsafeFlags(["-Xfrontend", "-warn-long-expression-type-checking=\(msForWarningExpression)",
-                              "-Xfrontend", "-warn-long-function-bodies=\(msForWarningBody)"])
-            ]
+            swiftSettings: swiftSettingsFlags()
         ),
     ]
 )
 
+private func swiftSettingsFlags() -> [SwiftSetting] {
+  [.unsafeFlags([
+    "-Xfrontend", "-warn-long-expression-type-checking=\(msForWarningExpression)",
+    "-Xfrontend", "-warn-long-function-bodies=\(msForWarningBody)",
+    "-Xfrontend", "-warn-concurrency",
+    "-Xfrontend", "-enable-actor-data-race-checks"
+   ])]
+}
+
 private func packageDependencies(internalPackages: [String] = internalPackages) -> [Package.Dependency] {
   var result = [
     Package.Dependency.package(url: "https://github.com/tlacan/R.swift/", branch: "xcstrings-7.7.0"),
-    Package.Dependency.package(url: "https://github.com/SimplyDanny/SwiftLintPlugins", from: "0.57.0"),
-    Package.Dependency.package(url: "https://github.com/Swinject/Swinject.git", from: "2.8.0")
+    Package.Dependency.package(url: "https://github.com/SimplyDanny/SwiftLintPlugins", from: "0.57.0")
   ]
   internalPackages.forEach({ internalPackage in
     result.append(Package.Dependency.package(name: internalPackage, path: "../\(internalPackage)"))

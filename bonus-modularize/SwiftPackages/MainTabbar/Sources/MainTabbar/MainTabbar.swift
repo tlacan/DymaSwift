@@ -1,6 +1,6 @@
 import SwiftUI
 import DesignSystem
-import Swinject
+import GlobalHelper
 
 public struct MainTabView: View {
   enum Tabs: String, CaseIterable {
@@ -39,22 +39,20 @@ public struct MainTabView: View {
     static let tabbarButtonTextSize: CGFloat = 10
   }
 
-  public init(container: Resolver) {
-    self.homeTabView = container.resolve(AnyView.self, name: MainTabBarAssembly.kHomeTabView) ??
-                       AnyView(EmptyView())
-    self.tripsTabView = container.resolve(AnyView.self, name: MainTabBarAssembly.kTripsTabView) ??
-                        AnyView(EmptyView())
+  public init(configuration: MainTabbarConfiguration) {
+    self.homeTabView = configuration.homeTabView
+    self.tripsTabView = configuration.tripsTabView
   }
 
   public var body: some View {
     VStack(spacing: 0) {
       tabContent()
       tabbar()
-    }/*.onReceive(NotificationsConstants.didCreateTrip.publisher) { _ in
+    }.onReceive(NotificationsConstants.didCreateTrip.publisher) { _ in
       withAnimation(.default) {
         tabSelection = .myTrips
       }
-    }*/
+    }
   }
 
   @ViewBuilder
@@ -126,11 +124,5 @@ public struct MainTabView: View {
       homeTabView: AnyView(Text("Welcome to Home")),
       tripsTabView: AnyView(Text("Explore your Trips"))
   )
-
-  // Create a container and assemble the dependencies
-  let container = Container()
-  let mainTabBarAssembly = MainTabBarAssembly(configuration: configuration)
-  mainTabBarAssembly.assemble(container: container)
-
-  return MainTabView(container: container)
+  return MainTabView(configuration: configuration)
 }

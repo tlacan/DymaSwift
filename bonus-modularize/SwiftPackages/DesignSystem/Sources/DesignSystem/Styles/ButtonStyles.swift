@@ -9,6 +9,10 @@ import Foundation
 import SwiftUI
 
 public struct HighlightButton: ButtonStyle {
+  public init() {
+
+  }
+
   public func makeBody(configuration: Configuration) -> some View {
     configuration.label
       .overlay(Color.black.opacity(configuration.isPressed ? 0.2 : 0))

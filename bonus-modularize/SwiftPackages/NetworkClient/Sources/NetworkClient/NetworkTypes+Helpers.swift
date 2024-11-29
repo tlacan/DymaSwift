@@ -11,7 +11,7 @@ public enum Server: String {
   case dev = "http://localhost:80/"
 }
 
-public typealias APIResponse<T: Decodable> = Result<T, APIError>
+public typealias APIResponse<T: Decodable & Sendable> = Result<T, APIError>
 
 extension Data {
   func mapJSON() -> Any? {

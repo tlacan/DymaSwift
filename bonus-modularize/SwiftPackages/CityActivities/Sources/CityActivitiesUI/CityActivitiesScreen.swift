@@ -10,6 +10,7 @@ import DesignSystem
 import NetworkClient
 import CityActivitiesData
 import CityActivitiesDomain
+import GlobalHelper
 
 struct CityActivitiesScreen: View {
   @Environment(\.dismiss)
@@ -53,10 +54,10 @@ struct CityActivitiesScreen: View {
       .toolbar {
         ToolbarItem(placement: .primaryAction) {
           Button {
-            //Task {
-            //  await viewModel.createTrip()
-            //}
-            dismiss()
+            Task {
+              await viewModel.createTrip()
+              dismiss()
+            }
           } label: {
             Text(R.string.localizable.cityActivitiesButtonCreate)
           }.disabled(viewModel.selectedActivities.isEmpty)
@@ -76,11 +77,11 @@ struct CityActivitiesScreen: View {
           }
           ForEach(0..<nbRows, id: \.self) { rowIndex in
             GridRow {
-              if viewModel.values.count >= rowIndex * 2 {
-                itemButton(activity: viewModel.values[rowIndex * 2], fullWidth: geo.size.width)
+              if let activity = viewModel.values[safe: rowIndex * 2] {
+                itemButton(activity: activity, fullWidth: geo.size.width)
               }
-              if viewModel.values.count >= rowIndex * 2 + 1 {
-                itemButton(activity: viewModel.values[rowIndex * 2 + 1], fullWidth: geo.size.width)
+              if let activity = viewModel.values[safe: rowIndex * 2 + 1] {
+                itemButton(activity: activity, fullWidth: geo.size.width)
               }
             }
           }

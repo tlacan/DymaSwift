@@ -8,12 +8,12 @@
 import NetworkClient
 import CityActivitiesDomain
 
-public protocol TripService {
+public protocol TripService: Sendable {
   func createTrip(_ trip: TripModel) async -> APIResponse<TripModel>
   func trips() async -> APIResponse<[TripModel]>
 }
 
-public final class TripServiceNetwork: TripService {
+public final class TripServiceNetwork: TripService, @unchecked Sendable {
   let networkClient: NetworkClient
 
   public init(networkClient: NetworkClient) {
@@ -29,7 +29,7 @@ public final class TripServiceNetwork: TripService {
   }
 }
 
-public final class TripServiceMock: TripService {
+public final class TripServiceMock: TripService, @unchecked Sendable {
 
   public init() { }
   public func createTrip(_ trip: TripModel) async -> APIResponse<TripModel> {

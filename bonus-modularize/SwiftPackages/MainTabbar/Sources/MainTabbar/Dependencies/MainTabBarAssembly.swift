@@ -25,5 +25,11 @@ public final class MainTabBarAssembly: Assembly {
     container.register(AnyView.self, name: MainTabBarAssembly.kTripsTabView) { _ in
       self.configuration.tripsTabView
     }.inObjectScope(.container)
+
+    container.register(MainTabbarConfiguration.self) { resolver in
+      let homeTabView = resolver.resolve(AnyView.self, name: MainTabBarAssembly.kHomeTabView) ?? AnyView(EmptyView())
+      let tripsTabView = resolver.resolve(AnyView.self, name: MainTabBarAssembly.kTripsTabView) ?? AnyView(EmptyView())
+      return MainTabbarConfiguration(homeTabView: homeTabView, tripsTabView: tripsTabView)
+    }
   }
 }

@@ -12,7 +12,8 @@ private let internalPackages: [String] = [
   "DesignSystem",
   "Onboarding",
   "MainTabbar",
-  "CityActivities"
+  "CityActivities",
+  "GlobalHelper"
 ]
 private let msForWarningExpression = 50
 private let msForWarningBody = 100
